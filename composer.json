@@ -1,0 +1,31 @@
+{
+    "name": "kristof/cryptomus",
+    "description": "Laravel wrapper for the Cryptomus API",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kristof"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3|^8.0",
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kristof\\Cryptomus\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kristof\\Cryptomus\\CryptomusServiceProvider"
+            ],
+            "aliases": {
+                "Cryptomus": "Kristof\\Cryptomus\\Facades\\Cryptomus"
+            }
+        }
+    }
+}
