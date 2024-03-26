@@ -17,6 +17,7 @@
             "Kristof\\Cryptomus\\": "src/"
         }
     },
+    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
