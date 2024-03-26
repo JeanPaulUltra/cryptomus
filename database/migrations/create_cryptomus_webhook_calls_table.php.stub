@@ -8,7 +8,7 @@ class CreateCryptomusWebhookCallsTable extends Migration
      * Run the migrations.
      *
      * @return void
-     *
+     */
    public function up(){
     Schema::create('cryptomus_webhook_calls', function (Blueprint $table) {
                $table->increments('id');

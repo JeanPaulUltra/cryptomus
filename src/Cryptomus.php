@@ -31,17 +31,15 @@ class Cryptomus
     }
     public function makeRequest(string $method, string $uri,array $params = []){
         try {
-            //$params['url_callback']=env('APP_URL').'/cryptomus/webhook';//set webhook url
-            $params['url_callback']='https://play.svix.com/in/e_MzawbTDguMcXHbx5ElPiPTCRqsE/';
+            $params['url_callback']=env('APP_URL').'/api/cryptomus/webhook';//set webhook url
             $data =json_encode($params);
-            $response = $this->client->request($method, 'v1/test-webhook/'.$uri,
+            $response = $this->client->request($method, 'v1/'.$uri,
                 ['headers' => [
                 'sign'=>md5(base64_encode($data) . $this->paymentKey)
                 ],
             'body' => $data]);
             return json_decode((string) $response->getBody(), true);
         }catch (GuzzleException $e){
-            dd($e->getMessage());
             Log::error($e->getMessage());
         }
     }

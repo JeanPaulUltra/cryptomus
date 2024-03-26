@@ -2,6 +2,7 @@
 
 namespace Kristof\Cryptomus\Http\Middleware;
 use Closure;
+use Illuminate\Support\Facades\Log;
 use Kristof\Cryptomus\Exceptions\WebhookFailed;
 class VerifySignature
 {
@@ -25,7 +26,9 @@ class VerifySignature
         if (empty($paymentKey)) {
             throw WebhookFailed::sharedSecretNotSet();
         }
-        $computedHash = md5(base64_encode(json_encode($payload, JSON_UNESCAPED_UNICODE)) . $paymentKey);
+        $data = json_decode($payload, true);
+        unset($data['sign']);
+        $computedHash = md5(base64_encode(json_encode($data, JSON_UNESCAPED_UNICODE)) . $paymentKey);
         return hash_equals($signature, $computedHash);
     }
 }

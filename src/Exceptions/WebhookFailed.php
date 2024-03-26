@@ -1,9 +1,7 @@
 <?php
 
 namespace Kristof\Cryptomus\Exceptions;
-
 use Exception;
-use Illuminate\Http\Request;
 use Kristof\Cryptomus\Models\CryptomusWebhookCall;
 class WebhookFailed extends Exception
 {
